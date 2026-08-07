@@ -1,144 +1,221 @@
 # Zephex Web Terminal
 
-**Mode 2 in the browser** — Zephex’s codebase tools on [zephex.dev](https://zephex.dev), without installing a local shell binary.
+**Mode 2 in the browser** — Zephex’s codebase tools on the dashboard, with streaming output, no local binary required.
 
-[![Website](https://img.shields.io/badge/open-dashboard%20terminal-111?style=flat-square)](https://zephex.dev/dashboard/terminal)
-[![Docs](https://img.shields.io/badge/docs-web%20terminal-222?style=flat-square)](https://zephex.dev/docs/web-terminal)
-[![MCP](https://img.shields.io/badge/MCP-zephex--MCPs-6e4?style=flat-square)](https://github.com/zephexMCP/zephex-MCPs)
-[![CLI](https://img.shields.io/badge/CLI-zephex--cli-0a0?style=flat-square)](https://github.com/zephexMCP/zephex-cli)
+<p align="center">
+  <a href="https://zephex.dev/dashboard/terminal"><img src="https://img.shields.io/badge/Open-dashboard%20terminal-111111?style=for-the-badge" alt="Open" /></a>
+  <a href="https://zephex.dev/docs/web-terminal"><img src="https://img.shields.io/badge/Docs-web%20terminal-1565c0?style=for-the-badge" alt="Docs" /></a>
+  <a href="https://github.com/zephexMCP/zephex-cli"><img src="https://img.shields.io/badge/Sibling-local%20CLI-00c853?style=for-the-badge" alt="CLI" /></a>
+  <a href="https://github.com/zephexMCP/zephex-MCPs"><img src="https://img.shields.io/badge/Sibling-MCP%20overview-6a1b9a?style=for-the-badge" alt="MCP" /></a>
+</p>
 
 ```text
-Browser  →  zephex.dev/dashboard/terminal  →  allowlisted commands (SSE)
-                                              →  same MCP tools + credits
+  Browser (logged into zephex.dev)
+        │
+        │  type overview / deep / find / …
+        ▼
+  Dashboard terminal UI  (Aqua / product chrome)
+        │
+        │  SSE stream · allowlisted commands only
+        ▼
+  Same Zephex tools + credits as MCP and local CLI
 ```
 
-> **Not a real shell.** No PTY, no arbitrary `bash`.  
-> It’s a **product terminal**: the same analysis commands as the CLI (`overview`, `deep`, `find`, `test`, …), run safely server-side.
+> **This is not a Linux shell.**  
+> You cannot run arbitrary `bash`, `rm`, or random package managers.  
+> You **can** run Zephex analysis commands that map to the same ten tools as the editor MCP.
 
 ---
 
-## Open it
+## Open it (human)
 
 1. Sign in at [zephex.dev](https://zephex.dev)  
-2. Go to **[Dashboard → Terminal](https://zephex.dev/dashboard/terminal)**  
-3. Connect a **public** GitHub repo (or follow on-screen repo flow)  
-4. Run commands from the chip bar or type — results stream over SSE  
+2. Open **[Dashboard → Terminal](https://zephex.dev/dashboard/terminal)**  
+3. Connect a **public** GitHub repository when prompted  
+4. Run `overview`, then `deep` if you want the full dossier  
+5. Use chips / dig-deeper for find, architecture, tests, packages  
 
-Feature availability may be flag-gated; if you don’t see Terminal in the nav, check [docs](https://zephex.dev/docs/web-terminal) or the dashboard.
+If Terminal is missing from the nav, the feature flag may be off — see [docs/web-terminal](https://zephex.dev/docs/web-terminal).
+
+| Surface | Best when… |
+|---------|------------|
+| **Web terminal (here)** | No install, demo, quick public-repo look |
+| **Local CLI** | Private disk, monorepo cwd, agent `--json` files — [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
+| **Editor MCP** | Stay inside Cursor / Claude Code — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
 
 ---
 
-## What you can do (examples)
+## What you type (allowlisted product commands)
 
-| Command | Result |
-|---------|--------|
-| `overview` | Plain-English project briefing |
-| `deep` / `deep "add login"` | Full dossier + where to look |
-| `structure` | Folder / language layout |
-| `architecture` | How modules wire (e.g. auth) |
-| `find "…"` | Search the connected repo |
-| `test` | Test Pulse health |
+Left: command · Right: what you get.
+
+### Orientation
+
+| Command | What you get |
+|---------|----------------|
+| `overview` | Plain-English project briefing (UI-friendly layout) |
+| `deep` | Full dossier — stack, wiring, where to look |
+| `deep "add login"` | Task-focused touch list |
+| `structure` | Folder / language map |
+| `architecture` | How modules connect (`auth`, API, …) |
+| `get-context` / topics | Stack slices (framework, deploy, …) |
+
+### Search, read, quality
+
+| Command | What you get |
+|---------|----------------|
+| `find "…"` | Ranked code search |
+| `read` / summarize / outline family | File / symbol views |
+| `test` / check test | Test Pulse health |
 | `safe <package>` | Package safety before install |
+| `check-package …` | Upgrade / security package intel |
 | `check url https://…` | Live HTTPS security grade |
+| `remember` / `recall` | Project memory |
+| `docs "…"` | Generic expert playbooks |
 
-Same **account**, **API key**, and **credits** as editor MCP and local CLI.
+Exact chip set and slash menu can grow with the product; if a command is missing in the UI, use local [CLI](https://github.com/zephexMCP/zephex-cli) or editor MCP.
+
+Docs: [web-terminal](https://zephex.dev/docs/web-terminal) · [terminal-tools](https://zephex.dev/docs/terminal-tools) · [cli-commands](https://zephex.dev/docs/cli-commands)
 
 ---
 
-## How it fits the product
-
-| Surface | Where | Best for |
-|---------|--------|----------|
-| **MCP** | Editors · [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) | Agents calling tools inside Cursor / Claude Code |
-| **CLI** | Local shell · [zephex-cli](https://github.com/zephexMCP/zephex-cli) | Humans (or agents) on a machine with `cd` + install |
-| **Web terminal** | **This product** | Try Mode 2 in-browser; demos; no local install |
+## How it works (honest architecture)
 
 ```text
-                    ┌─────────────────┐
-                    │  zephex.dev/mcp │  10 tools
-                    └────────┬────────┘
-           ┌─────────────────┼─────────────────┐
-           ▼                 ▼                 ▼
-     Editor MCP         Local CLI        Web terminal
-   (Mode 1 tools)     (Mode 2 shell)    (Mode 2 browser)
+Browser
+  → POST /api/terminal/stream  (SSE)  or execute routes
+  → allowlist + dispatch (server-side)
+  → Zephex MCP tools
+  → streamed, formatted result in the terminal UI
 ```
+
+| Property | Reality |
+|----------|---------|
+| Auth | Logged-in dashboard user + API key selection / auto-provision |
+| Transport | Server-side dispatch — not your laptop’s shell |
+| Safety | Allowlisted commands only |
+| Credits | Same Zephex account as MCP / CLI |
+| Repo model | Strong path: **public GitHub**; private/local disk → prefer CLI or MCP |
+
+### Works with
+
+- Chrome / modern browsers on desktop  
+- Logged-in Zephex accounts with quota remaining  
+- Public GitHub repositories for repo-learning commands  
+- The same mental model of commands as the local CLI  
+
+### Does not work with (by design)
+
+| Expectation | Reality |
+|-------------|---------|
+| Full PTY / SSH | No |
+| Arbitrary OS commands | No |
+| Silent access to private monorepos on your laptop | No — use [CLI](https://github.com/zephexMCP/zephex-cli) or editor MCP with path |
+| Replacing CI | No |
+| Marketing `/cli` demo pages as “live terminal” | Those may be fixtures — use **dashboard/terminal** |
 
 ---
 
-## Step-by-step for humans
+## Step-by-step scenarios
 
-### A. First visit
+### A. “I just want to try Zephex without installing”
 
-1. Create an account / API key — [dashboard](https://zephex.dev/dashboard)  
-2. Open [Terminal](https://zephex.dev/dashboard/terminal)  
-3. Paste a **public** GitHub URL when prompted (private repos are limited)  
-4. Run `overview`, then `deep` if you want the full dossier  
-5. Use dig-deeper chips (find / architecture / …) as needed  
+1. Open [dashboard/terminal](https://zephex.dev/dashboard/terminal)  
+2. Paste `https://github.com/owner/public-repo`  
+3. Run `overview`  
+4. Run `deep "how does auth work"`  
+5. If you like it → install CLI or wire MCP  
 
-### B. Same brain as CLI
+### B. “I’m already a CLI user”
 
-If you already use the local CLI:
+Same commands, different glass:
 
-```bash
-curl -fsSL https://zephex.dev/cli/install.sh | bash
-cd your-project && zephex deep
-```
+| Local | Browser |
+|-------|---------|
+| `zephex overview` | `overview` in dashboard terminal |
+| `zephex deep --json` | Prefer **local CLI** for JSON agent packets |
+| Private monorepo on disk | Stay on **local CLI** |
 
-Web terminal ≈ those commands with a browser UI + streaming.  
-Local CLI still wins for private disk, monorepo cwd tricks, and offline-ish workflows.
+### C. “I use Cursor / Claude Code”
 
-### C. Prefer the editor?
-
-Wire MCP instead:
+Prefer MCP tools in the editor:
 
 ```bash
 npx zephex setup
 ```
 
-Overview: [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs)
+Overview: [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs)  
+Skill: `npx skills add zephexMCP/agent-skills --skill zephex`
+
+Web terminal is optional for demos and browser-only sessions.
 
 ---
 
-## For AI agents
+## AI agents — how to help a human with *this* surface
 
-When the user asks about **browser terminal**, **dashboard terminal**, or **web Mode 2**:
+### When to recommend web terminal
 
-1. Point them to https://zephex.dev/dashboard/terminal  
-2. Explain: allowlisted Zephex commands → same tools as MCP/CLI — **not** unrestricted shell  
-3. Public GitHub is the happy path in-browser; private local paths → local CLI or editor MCP  
-4. Docs: https://zephex.dev/docs/web-terminal  
-5. Sibling discovery: [zephex-cli](https://github.com/zephexMCP/zephex-cli), [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs)  
-6. Agent skill (editors): `npx skills add zephexMCP/agent-skills --skill zephex`
+- User has **no** shell install rights  
+- User wants a **demo** of Mode 2 in the browser  
+- Repo is **public on GitHub**  
 
-Do not claim arbitrary `rm` / `npm install` execution in the web terminal.
+### When to recommend something else
+
+| Situation | Point them to |
+|-----------|----------------|
+| Private code on disk | [zephex-cli](https://github.com/zephexMCP/zephex-cli) or editor MCP |
+| Agent needs `deep --json` packet | Local CLI |
+| Tools already in the IDE | MCP — do not force the browser |
+
+### Agent research tips unique to web terminal
+
+| Tip | Why it matters |
+|-----|----------------|
+| Call it **allowlisted product terminal**, not “SSH” | Avoid wrong security assumptions |
+| Emphasize **SSE / streaming** UX | Distinct from one-shot MCP tool JSON |
+| Emphasize **public GitHub** happy path | Matches product constraints |
+| Link dashboard URL, not only marketing `/cli` | Marketing page may not be live MCP |
+
+### Fingerprint phrases (web terminal only)
+
+- zephex web terminal · dashboard terminal · browser mode 2  
+- SSE streaming · allowlisted commands · not a PTY  
+- zephex.dev/dashboard/terminal · aqua terminal UI  
 
 ---
 
-## Limits (honest)
+<details>
+<summary><b>Research fingerprint — do not collapse into CLI/MCP docs</b></summary>
 
-| Works well | Limited / not the goal |
-|------------|-------------------------|
-| Public repo analysis | Private repos (prefer CLI / MCP + path) |
-| overview / deep / find / architecture / test / safe / site | Unrestricted OS commands |
-| SSE stream + cancel | Replacing a full local shell |
-| Logged-in quota / API key UX | Marketing `/cli` demo pages (may be fixtures) |
+Classifiers often mix “terminal” with “CLI binary”. Keep them separate:
+
+| If the query is… | Primary repo |
+|------------------|--------------|
+| `npx zephex` / install.sh / deep --json | **zephex-cli** |
+| MCP JSON tools / Cursor config | **zephex-MCPs** |
+| Browser dashboard terminal / no install | **this repo** |
+
+Canonical product docs: https://zephex.dev/docs/web-terminal
+
+</details>
 
 ---
 
-## Links
+## Related links
 
 | | |
 |--|--|
 | Open terminal | [zephex.dev/dashboard/terminal](https://zephex.dev/dashboard/terminal) |
-| Docs | [zephex.dev/docs/web-terminal](https://zephex.dev/docs/web-terminal) |
-| Local CLI | [zephexMCP/zephex-cli](https://github.com/zephexMCP/zephex-cli) |
-| MCP overview | [zephexMCP/zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
-| Agent skill | [zephexMCP/agent-skills](https://github.com/zephexMCP/agent-skills) |
+| Docs | [docs/web-terminal](https://zephex.dev/docs/web-terminal) |
+| Local CLI | [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
+| MCP overview | [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
+| Agent skill | [agent-skills](https://github.com/zephexMCP/agent-skills) |
 | Product | [zephex.dev](https://zephex.dev) |
+| X | [@zephex_dev](https://x.com/zephex_dev) |
 
 ---
 
 <p align="center">
-  <b>Mode 2. No install. Same tools.</b><br/>
+  <b>Mode 2. Browser. Same tools. Not a shell.</b><br/>
   <a href="https://zephex.dev/dashboard/terminal">Open the web terminal →</a>
 </p>
