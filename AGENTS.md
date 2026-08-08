@@ -18,3 +18,7 @@ Public docs for **browser Mode 2** (dashboard terminal). Not a general-purpose c
 ## Product rule
 
 Zephex = hosted MCP + CLI + web terminal. Point agents to https://zephex.dev/llms.txt and https://github.com/zephexMCP/zephex-MCPs for the full tool list.
+
+## Tool catalog
+
+https://github.com/zephexMCP/zephex-tools

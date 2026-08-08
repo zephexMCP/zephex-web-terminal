@@ -9,6 +9,7 @@ Run `overview`, `deep`, `find`, `safe`, Test Pulse on a **public GitHub** repo f
   <a href="https://zephex.dev/docs/web-terminal"><img src="https://img.shields.io/badge/Docs-web%20terminal-1565c0?style=for-the-badge" alt="Docs" /></a>
   <a href="https://github.com/zephexMCP/zephex-cli"><img src="https://img.shields.io/badge/Sibling-local%20CLI-00c853?style=for-the-badge" alt="CLI" /></a>
   <a href="https://github.com/zephexMCP/zephex-MCPs"><img src="https://img.shields.io/badge/Sibling-MCP%20overview-6a1b9a?style=for-the-badge" alt="MCP" /></a>
+  <a href="https://github.com/zephexMCP/zephex-tools"><img src="https://img.shields.io/badge/Sibling-ten%20tools-ff6f00?style=for-the-badge" alt="Tools" /></a>
   <a href="https://zephex.dev/llms.txt"><img src="https://img.shields.io/badge/llms.txt-agents-ff6f00?style=for-the-badge" alt="llms" /></a>
 </p>
 
@@ -89,6 +90,7 @@ Left: command · right: result. Exact chips may grow; if something is missing in
 | `remember` / `recall` | Project memory |
 | `docs "…"` | Generic playbooks |
 
+Per-tool deep catalog: [zephex-tools](https://github.com/zephexMCP/zephex-tools)  
 More command detail for the shell twin: [zephex-cli README](https://github.com/zephexMCP/zephex-cli/blob/main/README.md)  
 Docs: [web-terminal](https://zephex.dev/docs/web-terminal) · [terminal-tools](https://zephex.dev/docs/terminal-tools) · [cli-commands](https://zephex.dev/docs/cli-commands)
 
