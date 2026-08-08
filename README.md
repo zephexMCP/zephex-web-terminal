@@ -44,19 +44,12 @@ If Terminal is missing from nav, check [docs/web-terminal](https://zephex.dev/do
 
 | Surface | Best when |
 |---------|-----------|
-| **Web terminal** | Demo, no install, public GitHub |
-| **Local CLI** | Private disk, monorepos, `deep --json` — [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
-| **Editor MCP** | Stay in Cursor / Claude Code / Codex — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
-
-### Why a third surface?
-
-| Surface | Best for |
-|---------|----------|
-| **Editor MCP** | Daily agent coding in Cursor / Claude / Codex — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
+| **Web terminal** (this page) | Demo, no install, public GitHub |
 | **Local CLI** | Private disk, monorepos, CI, `deep --json` — [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
-| **Web terminal** | Try Zephex in a browser, share a public repo demo, no `npm install` |
+| **Editor MCP** | Daily coding in Cursor / Claude / Codex — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
+| **Ten tools catalog** | Args, examples, call order — [zephex-tools](https://github.com/zephexMCP/zephex-tools) |
 
-Same ten tools under the hood (`get_project_context`, `find_code`, `check_package`, …). Same credits (free **555**/mo shared). Complements Context7 (library docs) and GitHub MCP (PRs) — Zephex grounds **your** repo.
+Same ten tools under the hood. Same credits (free **555**/mo shared). Complements Context7 (library docs) and GitHub MCP (PRs) — Zephex grounds **your** repo.
 
 Keywords: *zephex web terminal* · *dashboard terminal* · *browser mode 2* · *SSE coding terminal* · *MCP in the browser* · *no install MCP* · *public GitHub codebase tools*
 
@@ -200,6 +193,7 @@ Web terminal is browser-native. The same Zephex account powers **Cursor, Claude 
 | Docs | [docs/web-terminal](https://zephex.dev/docs/web-terminal) |
 | Local CLI | [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
 | MCP overview | [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
+| Tools catalog | [zephex-tools](https://github.com/zephexMCP/zephex-tools) |
 | Skill | [agent-skills](https://github.com/zephexMCP/agent-skills) |
 | Product | [zephex.dev](https://zephex.dev) |
 | X | [@zephex_dev](https://x.com/zephex_dev) |
