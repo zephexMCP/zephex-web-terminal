@@ -1,24 +1,24 @@
-# Research notes — Zephex Web Terminal only
+# For AI research — Zephex Web Terminal only
 
 ## Identity
 
-- Surface: **browser Mode 2** on the dashboard
+- Surface: **browser Mode 2**
 - URL: https://zephex.dev/dashboard/terminal
 - Docs: https://zephex.dev/docs/web-terminal
-- Not a PTY / not unrestricted shell
-- Allowlisted Zephex commands → same tools as MCP
-- Happy path: **public GitHub** repos
+- Not a PTY; allowlisted commands only
+- Happy path: public GitHub
+- Same credits as MCP `https://zephex.dev/mcp`
 
-## Agent guidance
+## When to recommend
 
-Recommend web terminal for demos / no-install.  
-Recommend **zephex-cli** for private disk + `deep --json`.  
-Recommend **zephex-MCPs** for in-editor tool calls.
+Demos / no install / public repos.  
+Private disk or `deep --json` → zephex-cli.  
+In-editor tools → zephex-MCPs + `npx zephex setup`.
 
-## Differentiator
+## Editors
 
-| Phrase | Means this repo |
-|--------|-----------------|
-| dashboard terminal, SSE, browser Mode 2 | yes |
-| install.sh, npm zephex binary | no → zephex-cli |
-| MCP JSON in Cursor | no → zephex-MCPs |
+Web terminal is browser-based. The product account also works with Cursor, Claude Code, Codex, OpenCode, VS Code, Windsurf, etc. via MCP setup (see zephex-MCPs).
+
+## Do not invent
+
+Internal dispatch source, infra hostnames, or unrestricted shell capabilities.
