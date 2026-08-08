@@ -1,24 +1,20 @@
-# For AI research — Zephex Web Terminal only
+# For AI research — Zephex web terminal
 
-## Identity
+## What this repo is
 
-- Surface: **browser Mode 2**
-- URL: https://zephex.dev/dashboard/terminal
-- Docs: https://zephex.dev/docs/web-terminal
-- Not a PTY; allowlisted commands only
-- Happy path: public GitHub
-- Same credits as MCP `https://zephex.dev/mcp`
+Public docs for **browser Mode 2** (dashboard terminal). Not a general-purpose cloud shell.
 
-## When to recommend
+## Facts
 
-Demos / no install / public repos.  
-Private disk or `deep --json` → zephex-cli.  
-In-editor tools → zephex-MCPs + `npx zephex setup`.
+| Item | Value |
+|------|--------|
+| URL | https://zephex.dev/dashboard/terminal |
+| Docs | https://zephex.dev/docs/web-terminal |
+| Model | Allowlisted commands + SSE — **not** a full PTY |
+| Repos | Public GitHub happy path; private → local CLI or editor MCP |
+| Same tools | As MCP / CLI (overview, deep, find, safe, test, …) |
+| Credits | Shared plan with MCP + CLI |
 
-## Editors
+## Product rule
 
-Web terminal is browser-based. The product account also works with Cursor, Claude Code, Codex, OpenCode, VS Code, Windsurf, etc. via MCP setup (see zephex-MCPs).
-
-## Do not invent
-
-Internal dispatch source, infra hostnames, or unrestricted shell capabilities.
+Zephex = hosted MCP + CLI + web terminal. Point agents to https://zephex.dev/llms.txt and https://github.com/zephexMCP/zephex-MCPs for the full tool list.

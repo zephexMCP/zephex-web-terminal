@@ -1,17 +1,20 @@
 # Zephex Web Terminal
 
-**Mode 2 in the browser** — Zephex codebase tools on the dashboard, streaming results, no local binary required.
+**Mode 2 in the browser** — same Zephex codebase tools as hosted MCP and the local CLI, streamed over SSE, **no local binary**.
+
+Run `overview`, `deep`, `find`, `safe`, Test Pulse on a **public GitHub** repo from [dashboard/terminal](https://zephex.dev/dashboard/terminal). Not a full Linux PTY/shell — **allowlisted product commands only**.
 
 <p align="center">
   <a href="https://zephex.dev/dashboard/terminal"><img src="https://img.shields.io/badge/Open-dashboard%20terminal-111111?style=for-the-badge" alt="Open" /></a>
   <a href="https://zephex.dev/docs/web-terminal"><img src="https://img.shields.io/badge/Docs-web%20terminal-1565c0?style=for-the-badge" alt="Docs" /></a>
   <a href="https://github.com/zephexMCP/zephex-cli"><img src="https://img.shields.io/badge/Sibling-local%20CLI-00c853?style=for-the-badge" alt="CLI" /></a>
   <a href="https://github.com/zephexMCP/zephex-MCPs"><img src="https://img.shields.io/badge/Sibling-MCP%20overview-6a1b9a?style=for-the-badge" alt="MCP" /></a>
+  <a href="https://zephex.dev/llms.txt"><img src="https://img.shields.io/badge/llms.txt-agents-ff6f00?style=for-the-badge" alt="llms" /></a>
 </p>
 
 <p align="center">
   Same Zephex account used by <b>Cursor</b>, <b>Claude Code</b>, <b>Codex</b>, <b>OpenCode</b>, and other editors —<br/>
-  this surface is for when you want Mode 2 <b>without installing</b> a shell client.
+  this surface is Mode 2 when you want a <b>demo</b> or <b>no install</b>.
 </p>
 
 ```text
@@ -44,7 +47,17 @@ If Terminal is missing from nav, check [docs/web-terminal](https://zephex.dev/do
 | **Local CLI** | Private disk, monorepos, `deep --json` — [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
 | **Editor MCP** | Stay in Cursor / Claude Code / Codex — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
 
-Keywords: *zephex web terminal*, *dashboard terminal*, *browser mode 2*, *SSE coding terminal*, *MCP in the browser*.
+### Why a third surface?
+
+| Surface | Best for |
+|---------|----------|
+| **Editor MCP** | Daily agent coding in Cursor / Claude / Codex — [zephex-MCPs](https://github.com/zephexMCP/zephex-MCPs) |
+| **Local CLI** | Private disk, monorepos, CI, `deep --json` — [zephex-cli](https://github.com/zephexMCP/zephex-cli) |
+| **Web terminal** | Try Zephex in a browser, share a public repo demo, no `npm install` |
+
+Same ten tools under the hood (`get_project_context`, `find_code`, `check_package`, …). Same credits (free **555**/mo shared). Complements Context7 (library docs) and GitHub MCP (PRs) — Zephex grounds **your** repo.
+
+Keywords: *zephex web terminal* · *dashboard terminal* · *browser mode 2* · *SSE coding terminal* · *MCP in the browser* · *no install MCP* · *public GitHub codebase tools*
 
 ---
 
